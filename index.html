@@ -28,9 +28,9 @@ header p{margin:6px 0 0;color:var(--mute);max-width:62ch}
 .top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:20px}
 @media (max-width:760px){.top{grid-template-columns:1fr}}
 form{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:14px;grid-template-columns:1fr 1fr;align-content:start}
-.field{display:grid;gap:5px;min-width:0}
+.field{display:grid;gap:6px;min-width:0;grid-template-rows:18px 46px}
 .field.full{grid-column:1/-1}
-label{font-size:12px;letter-spacing:.08em;color:var(--mute)}
+label{font-size:12px;letter-spacing:.08em;color:var(--mute);line-height:18px;height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 input,select{font:inherit;font-family:var(--f-mono);font-size:16px;background:var(--sky);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:0 12px;height:46px;width:100%;max-width:100%;box-sizing:border-box;min-width:0;display:block;margin:0;-webkit-appearance:none;appearance:none;text-align:left}
 select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:34px}
 input::-webkit-date-and-time-value{text-align:left;margin:0}
@@ -41,7 +41,7 @@ input::-webkit-datetime-edit{padding:0}
 input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
 .check{display:flex;gap:8px;align-items:center;grid-column:1/-1;font-size:14px;color:var(--ink)}
 .check input{width:auto}
-button{font:inherit;font-weight:700;background:var(--moon);color:#1b1608;border:0;border-radius:8px;padding:11px 14px;cursor:pointer;grid-column:1/-1;letter-spacing:.1em}
+button{font:inherit;font-weight:700;height:46px;box-sizing:border-box;background:var(--moon);color:#1b1608;border:0;border-radius:8px;padding:11px 14px;cursor:pointer;grid-column:1/-1;letter-spacing:.1em}
 button:hover{filter:brightness(1.07)}
 .reading{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:center}
 @media (max-width:460px){.reading{grid-template-columns:1fr;justify-items:center;text-align:center}}
@@ -131,13 +131,13 @@ tbody tr[data-l]:focus-visible{outline:2px solid var(--moon);outline-offset:-2px
 <div class="wrap">
   <header>
     <h1>月相生日配對</h1>
-    <p>輸入生日，找出前後幾年內，月亮亮面跟你「剛好拼成一整顆」和「長得一模一樣」的出生時刻。每一輪月相都會算出照明剛好相等的那一刻，誤差為 0，精確到分鐘。以北半球（台灣）看到的月亮為準，亮面左右邊都會核對。</p>
+    <p>輸入生日，找出前後幾年內，月亮亮面跟你「剛好拼成一整顆」和「長得一模一樣」的出生時刻。每一輪月相都會算出照明剛好相等的那一刻，誤差為 0，精確到分鐘。不確定出生時間就用 12:00。以北半球（台灣）看到的月亮為準，亮面左右邊都會核對。</p>
   </header>
 
   <div class="top">
     <form id="f" novalidate>
       <div class="field"><label for="bd">生日</label><input id="bd" type="date" value="1995-08-15" min="1800-01-01" max="2200-12-31" required></div>
-      <div class="field"><label for="bt">出生時間（台灣時間）</label><input id="bt" type="time" value="12:00"><p class="hint">不確定就用 12:00</p></div>
+      <div class="field"><label for="bt">出生時間（台灣時間）</label><input id="bt" type="time" value="12:00"></div>
       <input type="hidden" id="tz" value="8">
       <input type="hidden" id="obs" value="tpe">
       <div class="field"><label for="yr">搜尋範圍（前後 N 年）</label><input id="yr" type="number" min="0" max="30" step="1" value="5"></div>
